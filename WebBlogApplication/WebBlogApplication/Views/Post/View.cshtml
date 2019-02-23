@@ -1,0 +1,23 @@
+﻿@model WebBlogApplication.Models.PostBindnViewModels.PostDetailedViewModel
+
+@{
+    ViewData["Title"] = @Model.Title;
+}
+
+<img src="~/images/@Model.Picture" alt="PostPicture" class="img-responsive"/>
+
+<h2>@Model.Title</h2>
+<h3>@Model.Date.ToString("D")</h3>
+
+@if(User.Identity.IsAuthenticated)
+{ 
+    <form asp-action="Delete" asp-controller="Post" asp-route-id="@Model.Id">
+        <p>
+            <a asp-action="Edit" asp-controller="Post" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+            <button class="btn btn-danger">Delete</button>
+        </p>
+    </form>
+}
+    <br />
+<p>@Model.PostText</p>
+
