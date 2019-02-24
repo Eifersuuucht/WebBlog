@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using WebBlogApplication.Data;
 using WebBlogApplication.Models;
 using WebBlogApplication.Services;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace WebBlogApplication
 {
@@ -52,8 +55,12 @@ namespace WebBlogApplication
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
             app.UseStaticFiles();
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "node_modules")),
+            //    RequestPath = new PathString("/vendor")
+            //});
 
             app.UseAuthentication();
 
