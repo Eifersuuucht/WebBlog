@@ -28,7 +28,7 @@ namespace WebBlogApplication.Services
 
         public PostDetailedViewModel GetPost(int id)
         {
-            return _context.Posts.Where(post => !post.IsDeleted).Select(post => new PostDetailedViewModel
+            return _context.Posts.Where(post => post.PostId == id).Where(post => !post.IsDeleted).Select(post => new PostDetailedViewModel
             {
                 Id = post.PostId,
                 Title = post.Title,
